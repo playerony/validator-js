@@ -1,4 +1,5 @@
 var validateSchema = require('./utils/validateSchema').validate;
+var validateData = require('./utils/validateData').validate;
 
 var validate = (data, schema) => {
     var currentData = data;
@@ -6,11 +7,11 @@ var validate = (data, schema) => {
 
     validateSchema(currentSchema);
 
-    return currentSchema;
+    return validateData(currentData, currentSchema);
 }
 
 var data = {
-    name: 'test'
+    name: 'xd'
 }
 
 var schema = {
