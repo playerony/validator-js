@@ -11,13 +11,14 @@ var validate = (data, schema) => {
 }
 
 var data = {
-    name: 'xd'
+    name: '13.12.1995'
 }
 
 var schema = {
     parameters: {
         name: {
             type: 'string',
+            format: 'date'
         },
         objects: {
             type: 'array',
