@@ -11,19 +11,22 @@ var validate = (data, schema) => {
 }
 
 var data = {
-    name: '13.12.1995',
-    objects: ['1', '2']
+    name: 'test@gmail.com',
+    objects: ['13.12.1995', '13.12.1995']
 }
 
 var schema = {
     parameters: {
         name: {
             type: 'string',
-            format: 'date'
+            format: 'email'
         },
         objects: {
             type: 'array',
-            items: { type: 'string' }
+            items: { 
+                type: 'string',
+                format: 'date'
+            }
         }
     },
     required: [
