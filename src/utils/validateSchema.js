@@ -12,6 +12,10 @@ exports.validate = function(schema) {
             throw new Error(`Wrong schema: Parameter: ${element} has wrong type value: ${content.type}`);
         }
 
+        if(content.format && content.format !== 'date' && content.format !== 'email') {
+            throw new Error(`Wrong schema: Parameter: ${element} has wrong format value: ${content.format}`);
+        }
+
         if(content.type === 'array') {
             if(!content.items)
                 throw new Error(`Wrong schema: Parameters section is not defined for array.`);

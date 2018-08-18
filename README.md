@@ -8,7 +8,7 @@ Simple object validation using JSON schemas
 ```javascript
 var data = {
     name: '13.12.1995',
-    objects: [1]
+    objects: ['1']
 }
 
 var schema = {
@@ -42,7 +42,9 @@ validate(data, schema);
 - Installed GIT
 - Installed node.js
 
-### License
+###
+
+## License
 ```text
 MIT License
 
@@ -66,3 +68,5 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
+
+###

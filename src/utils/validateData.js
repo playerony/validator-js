@@ -19,11 +19,18 @@ exports.validate = function(data, schema) {
 
                 var type = schema.parameters[element].type;
 
-                if(type !== 'array' && typeof component !== type){
+                if(type !== 'array' && typeof component !== type) {
                     throw new Error(`Wrong data: ${component} is not a ${type} value.`);
                 } else if(type === 'array' && !(component instanceof Array)) {
                     throw new Error(`Wrong data: ${component} is not an array value.`);
-                } 
+                } else if(type === 'array') {
+                    var itemsType = schema.parameters[element].items.type;
+                    
+                    component.forEach((element, index) => {
+                        if(typeof element !== itemsType)
+                            throw new Error(`Wrong data: ${element} is not a ${itemsType} value.`);
+                    })
+                }
 
                 var format = schema.parameters[element].format;
 
@@ -43,8 +50,6 @@ exports.validate = function(data, schema) {
         var currentSchema = schema;
 
         validateRequiredFields(currentData, currentSchema);
-
-        return 'xd';
     }
 
     return validateData(data, schema);

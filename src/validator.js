@@ -11,7 +11,8 @@ var validate = (data, schema) => {
 }
 
 var data = {
-    name: '13.12.1995'
+    name: '13.12.1995',
+    objects: ['1', '2']
 }
 
 var schema = {
@@ -22,12 +23,13 @@ var schema = {
         },
         objects: {
             type: 'array',
-            items: {type: 'string'}
+            items: { type: 'string' }
         }
     },
     required: [
-        'name'
+        'name',
+        'objects'
     ]
 }
 
-console.log(validate(data, schema));
+validate(data, schema);
