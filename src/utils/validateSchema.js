@@ -1,20 +1,16 @@
 exports.validate = function(schema) {    
     const validateParamContent = (content, element) => {
-        if(!content) {
+        if(!content)
             throw new Error(`Wrong schema: Parameters section is not defined.`);
-        }
 
-        if(content.length === 0) {
+        if(content.length === 0)
             throw new Error('Wrong schema: Parameters are not defined.');
-        }
 
-        if(content.type !== 'string' && content.type !== 'number' && content.type !== 'array' && content.type !== 'object') {
+        if(content.type !== 'string' && content.type !== 'number' && content.type !== 'array' && content.type !== 'object')
             throw new Error(`Wrong schema: Parameter: ${element} has wrong type value: ${content.type}`);
-        }
 
-        if(content.format && content.format !== 'date' && content.format !== 'email') {
+        if(content.format && content.format !== 'date' && content.format !== 'email')
             throw new Error(`Wrong schema: Parameter: ${element} has wrong format value: ${content.format}`);
-        }
 
         if(content.type === 'array') {
             if(!content.items)
@@ -39,16 +35,14 @@ exports.validate = function(schema) {
         const currentSchema = schema;
         const parameters = currentSchema.parameters;
 
-        if(!parameters) {
+        if(!parameters)
             throw new Error('Wrong schema: Parameters section is not defined.');
-        }
 
-        if(parameters.length === 0) {
+        if(parameters.length === 0)
             throw new Error('Wrong schema: Parameters are not defined.');
-        }
 
         validateParameters(parameters);
     };
 
     return validateSchema(schema);
-}
+};

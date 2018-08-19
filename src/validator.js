@@ -8,12 +8,12 @@ const validate = (data, schema) => {
     validateSchema(currentSchema);
 
     return validateData(currentData, currentSchema);
-}
+};
 
 const data = {
     name: 'test@gmail.com',
     objects: ['13.12.1995', '13.12.1995']
-}
+};
 
 const schema = {
     parameters: {
@@ -33,6 +33,6 @@ const schema = {
         'name',
         'objects'
     ]
-}
+};
 
 validate(data, schema);
