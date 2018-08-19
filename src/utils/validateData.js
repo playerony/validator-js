@@ -1,8 +1,8 @@
-var validateEmail = require('./validateEmail').validateEmail;
-var validateDate = require('./validateDate').validateDate;
+const validateEmail = require('./validateEmail').validateEmail;
+const validateDate = require('./validateDate').validateDate;
 
 exports.validate = function(data, schema) {
-    var validateFormat = (format, component) => {
+    const validateFormat = (format, component) => {
         if(format && (format === 'date' || format === 'email')) {
             if(format === 'email' && !validateEmail(component)) {
                 throw new Error(`Wrong data: Format: '${component}' is not an ${format}.`);
@@ -10,25 +10,25 @@ exports.validate = function(data, schema) {
                 throw new Error(`Wrong data: Format: '${component}' is not a ${format}.`);
             }
         }
-    }
+    };
 
-    var validateField = (data, schema, element) => {
-        var component = data[element];
+    const validateField = (data, schema, element) => {
+        const component = data[element];
 
         if(!component) {
             throw new Error(`Wrong data: Required value is not defined: ${component}.`);
         }
 
-        var parameter = schema.parameters[element];
-        var type = parameter.type;
+        const parameter = schema.parameters[element];
+        const type = parameter.type;
 
         if(type !== 'array' && typeof component !== type) {
             throw new Error(`Wrong data: ${component} is not a ${type} value.`);
         } else if(type === 'array' && !(component instanceof Array)) {
             throw new Error(`Wrong data: ${component} is not an array value.`);
         } else if(type === 'array') {
-            var itemsType = schema.parameters[element].items.type;
-            var itemsFormat = schema.parameters[element].items.format;
+            const itemsType = schema.parameters[element].items.type;
+            const itemsFormat = schema.parameters[element].items.format;
             
             component.forEach((element, index) => {
                 if(typeof element !== itemsType)
@@ -38,13 +38,13 @@ exports.validate = function(data, schema) {
             })
         }
 
-        var format = schema.parameters[element].format;
+        const format = schema.parameters[element].format;
 
         validateFormat(format, component);
-    }
+    };
 
-    var validateRequiredFields = (data, schema) => {
-        var requiredFields = schema.required;
+    const validateRequiredFields = (data, schema) => {
+        const requiredFields = schema.required;
 
         if(requiredFields) {
             if(!(requiredFields instanceof Array)) {
@@ -55,14 +55,14 @@ exports.validate = function(data, schema) {
                 validateField(data, schema, element);
             })
         }
-    }
+    };
 
-    var validateData = (data, schema) => {
-        var currentData = data;
-        var currentSchema = schema;
+    const validateData = (data, schema) => {
+        const currentData = data;
+        const currentSchema = schema;
 
         validateRequiredFields(currentData, currentSchema);
-    }
+    };
 
     return validateData(data, schema);
 } 

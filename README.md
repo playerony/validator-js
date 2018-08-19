@@ -6,12 +6,12 @@ Simple object validation using JSON schemas
 
 ## Example
 ```javascript
-var data = {
+const data = {
     name: 'test@gmail.com',
     objects: ['13.12.1995', '13.12.1995']
 }
 
-var schema = {
+const schema = {
     parameters: {
         name: {
             type: 'string',

@@ -1,5 +1,5 @@
 exports.validate = function(schema) {    
-    var validateParamContent = (content, element) => {
+    const validateParamContent = (content, element) => {
         if(!content) {
             throw new Error(`Wrong schema: Parameters section is not defined.`);
         }
@@ -22,22 +22,22 @@ exports.validate = function(schema) {
 
             validateParamContent(content.items, element);
         }
-    }
+    };
 
-    var validateParameters = (parameters) => {
-        var currentParameters = parameters;
-        var keys = Object.keys(currentParameters);
+    const validateParameters = (parameters) => {
+        const currentParameters = parameters;
+        const keys = Object.keys(currentParameters);
 
         keys.forEach((element, index) => {
-            var content = parameters[element];
+            const content = currentParameters[element];
             
             validateParamContent(content, element);
         })
-    }
+    };
 
-    var validateSchema = (schema) => {
-        var currentSchema = schema;
-        var parameters = currentSchema.parameters;
+    const validateSchema = (schema) => {
+        const currentSchema = schema;
+        const parameters = currentSchema.parameters;
 
         if(!parameters) {
             throw new Error('Wrong schema: Parameters section is not defined.');
@@ -48,7 +48,7 @@ exports.validate = function(schema) {
         }
 
         validateParameters(parameters);
-    }
+    };
 
     return validateSchema(schema);
 }
