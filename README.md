@@ -1,53 +1,56 @@
 # validator-js
 
 ## Usage
+
 Simple object validation using JSON schemas
+
 ###
 
 ## Example
+
 ```javascript
 const data = {
-    name: 'test@gmail.com',
-    objects: ['13.12.1995', '13.12.1995']
-}
+  name: "test@gmail.com",
+  objects: ["13.12.1995", "13.12.1995"]
+};
 
 const schema = {
-    parameters: {
-        name: {
-            type: 'string',
-            format: 'email'
-        },
-        objects: {
-            type: 'array',
-            items: { 
-                type: 'string',
-                format: 'date'
-            }
-        }
+  parameters: {
+    name: {
+      type: "string",
+      format: "email"
     },
-    required: [
-        'name',
-        'objects'
-    ]
-}
+    objects: {
+      type: "array",
+      items: {
+        type: "string",
+        format: "date"
+      }
+    }
+  },
+  required: ["name", "objects"]
+};
 
 validate(data, schema);
 ```
+
 ###
 
 ## Installation
-1) Clone repository
-2) npm install
-3) npm test
 
+1. Clone repository
+2. npm install
+3. npm test
 
 #### Requirements
+
 - Installed GIT
 - Installed node.js
 
 ###
 
 ## License
+
 ```text
 MIT License
 
