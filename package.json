@@ -1,0 +1,19 @@
+{
+  "name": "@playerony/validator",
+  "version": "2.0.0",
+  "description": "JSON schema validator, which is designed to be fast and simple to use - another part of my study project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/playerony/validator-js.git"
+  },
+  "author": "Paweł Wojtasiński",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/playerony/validator-js/issues"
+  },
+  "homepage": "https://github.com/playerony/validator-js#readme"
+}
